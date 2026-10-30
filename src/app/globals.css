@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  --ivory: #f6f1ea;
+  --ivory-deep: #efe8dc;
+  --paper: #fbf8f3;
+  --ink: #241f1b;
+  --charcoal: #2e2925;
+  --taupe: #7a7168;
+  --stone: #c4b6a3;
+  --bronze: #9a784c;
+  --champagne: #c9b08a;
+  --line: rgba(36, 31, 27, 0.12);
+  --line-strong: rgba(36, 31, 27, 0.22);
+}
+
+@theme inline {
+  --color-ivory: var(--ivory);
+  --color-ivory-deep: var(--ivory-deep);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-charcoal: var(--charcoal);
+  --color-taupe: var(--taupe);
+  --color-stone: var(--stone);
+  --color-bronze: var(--bronze);
+  --color-champagne: var(--champagne);
+  --color-line: var(--line);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-cormorant);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--champagne) 55%, white);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  outline-color: var(--bronze);
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.container-page {
+  width: min(1180px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.container-wide {
+  width: min(1360px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.hairline {
+  height: 1px;
+  background: var(--line);
+}
+
+.reveal {
+  animation: rise 0.8s ease both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.image-zoom {
+  overflow: hidden;
+}
+
+.image-zoom img,
+.image-zoom span {
+  transition: transform 0.7s ease;
+}
+
+.image-zoom:hover img,
+.image-zoom:hover span {
+  transform: scale(1.04);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 2.85rem;
+  padding: 0.7rem 1.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background: var(--charcoal);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+}
+
+.btn-secondary:hover {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ivory) 70%, white);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  padding-inline: 0;
+  min-height: auto;
+}
+
+.btn-ghost:hover {
+  color: var(--bronze);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .image-zoom img,
+  .image-zoom span,
+  .btn {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
